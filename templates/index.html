@@ -1,0 +1,222 @@
+{% load static %} {# 이 줄은 이미 있으니 그대로 둡니다 #}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Clown Somoim</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Clown Somoim" />
+    <meta property="og:title" content="Clown Somoim - 당신의 취미를 찾아서!" />
+    <meta property="og:description" content="클라운 소모임은 전국 다양한 분야의 소모임을 연결하고, 새로운 경험을 제공합니다." />
+    <meta property="og:image" content="{% static 'images/clown_seo.jpg' %}" /> {# 소모임 대표 이미지로 변경 필요 #}
+    <meta property="og:url" content="http://127.0.0.1:8000/" /> {# 실제 서비스 URL로 변경 필요 #}
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="Clown Somoim" />
+    <meta property="twitter:title" content="Clown Somoim - 당신의 취미를 찾아서!" />
+    <meta property="twitter:description" content="클라운 소모임은 전국 다양한 분야의 소모임을 연결하고, 새로운 경험을 제공합니다." />
+    <meta property="twitter:image" content="{% static 'images/clown_seo.jpg' %}" /> {# 소모임 대표 이미지로 변경 필요 #}
+    <meta property="twitter:url" content="http://127.0.0.1:8000/" /> {# 실제 서비스 URL로 변경 필요 #}
+
+    <link rel="icon" type="image/png" href="{% static 'images/clown.png' %}" /> {# clown.png 이미지 확인 필요 #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js" integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+
+    <script defer src="{% static 'js/youtube.js' %}"></script>
+    <script defer src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+
+    <header>
+        <div class="inner">
+
+            <a href="/" class="logo">
+                <img src="{% static 'images/clown_logo.png' %}" alt="Clown Somoim Logo" /> {# 로고 이미지 파일명 확인 및 변경 #}
+            </a>
+
+            <div class="sub-menu">
+                <ul class="menu">
+                    <li>
+                        {% if user.is_authenticated %} {# 사용자가 로그인되어 있다면 #}
+                             <a href="{% url 'accounts:logout' %}">로그아웃</a>
+                        {% else %} {# 로그인되어 있지 않다면 #}
+                            <a href="{% url 'accounts:login' %}">로그인</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <a href="{% url 'board:list' %}">공지사항</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'customer:list' %}">고객센터</a>
+                    </li>
+                </ul>
+                <div class="search">
+                    <input type="text" />
+                    <span class="material-icons">search</span>
+                </div>
+            </div>
+
+            <div class="badges">
+                <div class="badge">
+                    <img src="{% static 'images/badge1.jpg' %}" alt="모임 참여 뱃지" /> {# alt 텍스트 수정 #}
+                </div>
+                <div class="badge">
+                    <img src="{% static 'images/badge2.jpg' %}" alt="모임 개설 뱃지" /> {# alt 텍스트 수정 #}
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="visual">
+        <div class="inner">
+
+            <div class="title fade-in">
+                <img src="{% static 'images/visual_title.png' %}" alt="CLOWN SOMOIM - 당신의 취미를 찾아서!" /> {# alt 텍스트 수정 #}
+                <a href="javascript:void(0)" class="btn1 btn1--brown" onclick="window.open('https://moaform.com/q/ar49F3')">소모임 가입</a>
+                <a href="javascript:void(0)" class="btn2 btn2--brown">커뮤니티 가입</a>
+            </div>
+            {# visual_cup1, visual_cup2, visual_spoon 관련 이미지가 원본 코드에 없어서 추가하지 않았습니다. 필요하면 이 섹션에 추가해야 합니다. #}
+
+        </div>
+    </section>
+
+
+    <section class="notice">
+
+        <div class="notice-line">
+            <div class="bg-left"></div>
+            <div class="bg-right"></div>
+            <div class="inner">
+
+                <div class="inner__left">
+                    <h2>공지사항</h2>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for notice in recent_notices %}
+                            <div class="swiper-slide">
+                                <a href="{% url 'board:detail' notice.id %}">
+                                    {{ notice.title }}
+                                    {% if notice.created_at|timesince|slice:":1" == "0" %}
+                                        <span class="new-badge">NEW</span>
+                                    {% endif %}
+                                </a>
+                            </div>
+                            {% empty %}
+                            {# 공지사항이 없을 경우 기본 메시지들 표시 #}
+                            <div class="swiper-slide">
+                                <a href="{% url 'board:list' %}">새로운 공지사항을 준비 중입니다</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{% url 'board:list' %}">클라운 소모임에 오신 것을 환영합니다</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{% url 'board:list' %}">다양한 소모임 활동에 참여해보세요</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{% url 'board:list' %}">새로운 인연을 만나보세요</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <a href="{% url 'board:list' %}" class="notice-line__more">
+                        <span class="material-icons">add_circle</span>
+                    </a>
+                </div>
+
+                <div class="inner__right">
+                    <h2>소모임 광고</h2>
+                    <div class="toggle-promotion open">
+                        <div class="material-icons">upload</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="promotion">
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="{% static 'images/promotion_slide1.png' %}" alt="클라운 소모임, 새로운 멤버를 모집합니다!" /> {# alt 텍스트 수정 #}
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'images/promotion_slide2.png' %}" alt="지금 소모임에 가입하고 첫 활동비 지원받으세요!" /> {# alt 텍스트 수정 #}
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'images/promotion_slide3.png' %}" alt="새로운 취미를 찾고 있나요? 클라운에서 시작하세요!" /> {# alt 텍스트 수정 #}
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'images/promotion_slide4.png' %}" alt="친구 초대 이벤트! 함께 할수록 즐거움이 두 배!" /> {# alt 텍스트 수정 #}
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'images/promotion_slide5.png' %}" alt="베스트 소모임 후기 이벤트! 푸짐한 상품 증정!" /> {# alt 텍스트 수정 #}
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-prev">
+                <span class="material-icons">arrow_back</span>
+            </div>
+            <div class="swiper-next">
+                <span class="material-icons">arrow_forward</span>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="inner">
+
+            <ul class="menu">
+                <li><a href="javascript:void(0)" class="green">개인정보처리방침</a></li>
+                <li><a href="javascript:void(0)">영상정보처리기기 운영관리 방침</a></li>
+                <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
+                <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
+                <li><a href="javascript:void(0)">윤리경영 핫라인</a></li>
+            </ul>
+
+            <div class="btn-group">
+                <a href="javascript:void(0)" class="btn3 btn3--white">찾아오시는 길</a>
+                <a href="javascript:void(0)" class="btn3 btn3--white">사이트 맵</a>
+            </div>
+
+            <div class="info">
+                <span>사업자등록번호 847-92-38594</span>
+                <span>(주)대전소모임컴퍼니 대표이사 이준호</span>
+                <span>TEL : 042) 826-7700 / FAX : 042) 826-7705</span>
+                <span>개인정보 책임자 : 이준호</span>
+                <span>대전광역시 유성구 대학로 99, 12F</span>
+                <span>고객센터 : 1588-9900</span>
+            </div>
+
+            <p class="copyright">
+                &copy; <span class="this-year"></span> Clown Somoim Company. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <div id="to-top">
+        <div class="material-icons">arrow_upward</div>
+    </div>
+
+</body>
+</html>
